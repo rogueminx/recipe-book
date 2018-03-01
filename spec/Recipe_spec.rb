@@ -19,15 +19,19 @@ describe(Recipe) do
     end
   end
 
-#
-#   it("validates presence of description") do
-#    project = Project.new({:project_name => "a project", :description => "a big project"})
-#    expect(project.save()).to(eq(true))
-#  end
-#
-#  it("validates presence of project name") do
-#   project = Project.new({:project_name => "", :description => "a big project"})
-#   expect(project.save()).to(eq(false))
-# end
+  it("validates presence of recipe") do
+   recipe = Recipe.new({:recipe_name => ""})
+   expect(recipe.save()).to(eq(false))
+ end
+
+   it("validates presence of ingredients") do
+    recipe = Recipe.new({:recipe_name => "Potato", :ingredients => ""})
+    expect(recipe.save()).to(eq(false))
+  end
+
+  it("validates presence of instructions") do
+   recipe = Recipe.new({:recipe_name => "Potato", :ingredients => "potato", :instructions => ""})
+   expect(recipe.save()).to(eq(false))
+ end
 
 end

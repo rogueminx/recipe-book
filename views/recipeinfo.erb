@@ -59,6 +59,7 @@
 <h3>Assign this recipe to another category:</h3>
   <form action="/recipes/<%= @recipe.id %>/category" method="post" class="form-container">
     <p><select id="category_id" name="category_id">
+      <option disabled selected>select</option>
       <% @categories.each do |category| %>
         <% unless @assigned_category.include?(category) %>
           <option value="<%=category.id%>"><%= category.category_name %></option>
@@ -73,11 +74,12 @@
     <form action="/recipes/<%= @recipe.id %>/rating" method="post" class="form-container">
       <input name="_method" type="hidden" value="patch">
       <p><select id="rating" name="rating">
-            <option value= 5>5 hearts</option>
-            <option value= 4>4 hearts</option>
-            <option value= 3>3 hearts</option>
-            <option value= 2>2 hearts</option>
-            <option value= 1>1 hearts</option>
+            <option disabled selected>select</option>
+            <option value= 5>♥ ♥ ♥ ♥ ♥</option>
+            <option value= 4>♥ ♥ ♥ ♥</option>
+            <option value= 3>♥ ♥ ♥</option>
+            <option value= 2>♥ ♥</option>
+            <option value= 1>♥</option>
       </select></p>
       <p><button type="submit" class="btn btn-info">Add Rating</button></p>
     </form>
