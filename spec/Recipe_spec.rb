@@ -6,7 +6,7 @@ describe(Recipe) do
       test_recipe = Recipe.create({:recipe_name => "Taco", :ingredients => "Bean, cheese, tortilla", :instructions => "Roll that shit up", :rating => 3, :id => nil})
       test_recipe2 = Recipe.create({:recipe_name => "Burrito", :ingredients => "Bean, cheese, tortilla", :instructions => "Roll that shit up", :rating => 5, :id => nil})
       test_recipe3 = Recipe.create({:recipe_name => "Taquito", :ingredients => "Bean, cheese, tortilla", :instructions => "Roll that shit up", :rating => 2, :id => nil})
-      expect(Recipe.sortrating()).to(eq([test_recipe2, test_recipe, test_recipe3]))
+        expect(Recipe.sortrating()).to(eq([test_recipe2, test_recipe, test_recipe3]))
     end
   end
 
@@ -15,9 +15,9 @@ describe(Recipe) do
   describe(".findingredient") do
     it("finds recipe ingredient") do
       test_recipe = Recipe.create({:recipe_name => "Taco", :ingredients => "Bean, cheese, tortilla", :instructions => "Roll that shit up", :rating => 3, :id => nil})
-      test_recipe2 = Recipe.create({:recipe_name => "Burrito", :ingredients => "Cheese, tortilla", :instructions => "Roll that shit up", :rating => 5, :id => nil})
-      test_recipe3 = Recipe.create({:recipe_name => "Taquito", :ingredients => "Cheese, tortilla", :instructions => "Roll that shit up", :rating => 2, :id => nil})
-      expect(Recipe.findingredient("bean")).to(eq([test_recipe]))
+      test_recipe2 = Recipe.create({:recipe_name => "Burrito", :ingredients => "Bean , Cheese, tortilla", :instructions => "Roll that shit up", :rating => 5, :id => nil})
+      test_recipe3 = Recipe.create({:recipe_name => "Taquito", :ingredients => "Cheese, tortilla, lettuce", :instructions => "Roll that shit up", :rating => 2, :id => nil})
+      expect(Recipe.findingredient("lettuce")).to(eq([test_recipe3]))
     end
   end
 
