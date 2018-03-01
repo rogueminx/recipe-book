@@ -11,6 +11,16 @@ describe(Recipe) do
   end
 
 
+
+  describe(".findingredient") do
+    it("finds recipe ingredient") do
+      test_recipe = Recipe.create({:recipe_name => "Taco", :ingredients => "Bean, cheese, tortilla", :instructions => "Roll that shit up", :rating => 3, :id => nil})
+      test_recipe2 = Recipe.create({:recipe_name => "Burrito", :ingredients => "Cheese, tortilla", :instructions => "Roll that shit up", :rating => 5, :id => nil})
+      test_recipe3 = Recipe.create({:recipe_name => "Taquito", :ingredients => "Cheese, tortilla", :instructions => "Roll that shit up", :rating => 2, :id => nil})
+      expect(Recipe.findingredient("bean")).to(eq([test_recipe]))
+    end
+  end
+
 #
 #   it("validates presence of description") do
 #    project = Project.new({:project_name => "a project", :description => "a big project"})
