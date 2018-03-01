@@ -1,11 +1,12 @@
 <a href='/' class="btn btn-info" id="back">back</a>
 <h1>Recipe Junkie</h1>
+<br>
 <h3>Welcome to your recipe categories.</h3>
 <hr>
 <% if @categories.any?() %>
   <h3>Here are all the categories in your recipe book:</h3>
-  <h4><% @categories.each do |category| %>
-  <a href="/category/<%= category.id()%>"><%= category.category_name %></h4>
+  <% @categories.each do |category| %>
+  <h4><a href="/category/<%= category.id()%>"><%= category.category_name %></a></h4>
   <% end %>
 <% end %>
 <hr>

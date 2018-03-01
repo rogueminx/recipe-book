@@ -4,6 +4,11 @@
   <button type="submit" class="btn btn-danger">Delete this Recipe</button>
 </form>
 <br>
+
+<% if @rating != nil %>
+  <p><%= @rating %></p>
+<% end %>
+
 <br>
 <h1 id="clickrecipe"><%= @recipe.recipe_name %> Recipe</h1>
 
@@ -42,21 +47,17 @@
 
 <% if @assigned_category.any?() %>
   <h3>Categories</h3>
-  <table>
   <% @assigned_category.each do |category| %>
-    <tr>
-      <td><h5><a href="/category/<%= category.id()%>"><%= category.category_name %></h5></td>
-      <td><form action="/categories/<%= category.id %>/recipe" method=post>
-            <input name="_method" type="hidden" value="delete">
-            <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
-            <button type="submit" class="remove_project_button">&#10005;</button>
-          </form></td>
-    </tr>
+      <h4><a href="/category/<%= category.id()%>"><%= category.category_name %></a>
+        <form action="/categories/<%= category.id %>/recipe" method=post class="deletecat">
+          <input name="_method" type="hidden" value="delete">
+          <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
+          <button type="submit" class="remove_project_button">&#10005;</button></h4>
+        </form>
   <% end %>
-  </table>
 <% end %>
 <h3>Assign this recipe to another category:</h3>
-  <form action="/recipes/<%= @recipe.id %>/category" method="post">
+  <form action="/recipes/<%= @recipe.id %>/category" method="post" class="form-container">
     <p><select id="category_id" name="category_id">
       <% @categories.each do |category| %>
         <% unless @assigned_category.include?(category) %>
@@ -66,6 +67,21 @@
     </select></p>
     <p><button type="submit" class="btn btn-info">Add category</button></p>
   </form>
+
+
+  <h3>Rate your recipe:</h3>
+    <form action="/recipes/<%= @recipe.id %>/rating" method="post" class="form-container">
+      <input name="_method" type="hidden" value="patch">
+      <p><select id="rating" name="rating">
+            <option value= 5>5 hearts</option>
+            <option value= 4>4 hearts</option>
+            <option value= 3>3 hearts</option>
+            <option value= 2>2 hearts</option>
+            <option value= 1>1 hearts</option>
+      </select></p>
+      <p><button type="submit" class="btn btn-info">Add Rating</button></p>
+    </form>
+
 
 <hr>
 

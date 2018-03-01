@@ -3,7 +3,6 @@ ENV['RACK_ENV'] = 'test'
 require("rspec")
 require("pg")
 require("sinatra/activerecord")
-require("employee")
 require("category")
 require("recipe")
 
@@ -16,5 +15,4 @@ RSpec.configure do |config|
     Category.all().each() do |category|
       category.destroy()
     end
-  end
 end

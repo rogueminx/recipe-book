@@ -8,11 +8,8 @@
 <hr>
 <% if @recipes.any?() %>
   <h3>Here are all the recipes in this category:</h3>
-  <table>
   <% @recipes.each do |recipe| %>
-    <tr>
-      <td><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></li></td>
-    </tr>
+    <h4><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></a></h4>
   <% end %>
   </table>
 <% end %>
