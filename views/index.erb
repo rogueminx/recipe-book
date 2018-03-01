@@ -14,7 +14,20 @@
   <% if @recipes.any?() %>
     <% @recipes.each do |recipe| %>
     <div class="well">
-      <h4><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></a></h4>
+      <% if recipe.rating == nil %>
+        <% elsif recipe.rating == 5 %>
+          <h2>♥ ♥ ♥ ♥ ♥</h2>
+        <% elsif recipe.rating == 4 %>
+          <h2>♥ ♥ ♥ ♥</h2>
+        <% elsif recipe.rating == 3 %>
+          <h2>♥ ♥ ♥</h2>
+        <% elsif recipe.rating == 2 %>
+          <h2>♥ ♥</h2>
+        <% elsif recipe.rating == 1 %>
+          <h2>♥</h2>
+      <% end %>
+      <h2><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></a></h2>
+      <img src="<%= recipe.img %>">
     </div>
     <% end %>
   <% end %>

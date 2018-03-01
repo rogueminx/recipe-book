@@ -1,14 +1,4 @@
 <a href='/recipes' class="btn btn-info" id="back">back</a>
-<form action="/recipes/<%= @recipe.id() %>" method="post" id="delete">
-  <input name="_method" type="hidden" value="delete">
-  <button type="submit" class="btn btn-danger">Delete this Recipe</button>
-</form>
-<br>
-
-<% if @rating != 0 %>
-  <p><%= @rating %></p>
-<% end %>
-
 <br>
 <h1 id="clickrecipe"><%= @recipe.recipe_name %> Recipe</h1>
 
@@ -22,6 +12,19 @@
     </form>
   </span>
 <hr>
+<% if @rating == nil %>
+  <% elsif @rating == 5 %>
+    <h2>♥ ♥ ♥ ♥ ♥</h2>
+  <% elsif @rating == 4 %>
+    <h2>♥ ♥ ♥ ♥</h2>
+  <% elsif @rating == 3 %>
+    <h2>♥ ♥ ♥</h2>
+  <% elsif @rating == 2 %>
+    <h2>♥ ♥</h2>
+  <% elsif @rating == 1 %>
+    <h2>♥</h2>
+<% end %>
+
 <h3 id="clickingredients">Ingredients</h3>
 <h5><%= @recipe.ingredients %></h5>
 <span class="editingredients">
@@ -59,7 +62,6 @@
 <h3>Assign this recipe to another category:</h3>
   <form action="/recipes/<%= @recipe.id %>/category" method="post" class="form-container">
     <p><select id="category_id" name="category_id">
-      <option disabled selected>select</option>
       <% @categories.each do |category| %>
         <% unless @assigned_category.include?(category) %>
           <option value="<%=category.id%>"><%= category.category_name %></option>
@@ -88,3 +90,8 @@
 <hr>
 
 <p><a href="/categories" class="btn btn-info">Manage categories</a></p>
+
+<form action="/recipes/<%= @recipe.id() %>" method="post" id="delete">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" class="btn btn-danger">Delete this Recipe</button>
+</form>
