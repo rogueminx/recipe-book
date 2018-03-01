@@ -1,0 +1,10 @@
+<div class="container" id="index">
+  <h1>The Recipe Junkie</h1>
+  <br>
+
+    <h3>Here are all the recipes in your recipe book with <%= @ingredient %> in the ingredients:</h3>
+    <% @recipes.each do |recipe| %>
+      <h4><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></a></h4>
+    <% end %>
+  
+</div>

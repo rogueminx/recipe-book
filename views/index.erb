@@ -1,6 +1,22 @@
 <div class="container" id="index">
   <h1>The Recipe Junkie</h1>
   <br>
+  <form action="/search" method="post" class="form-container">
+    <p><label for="ingredient">Search By Ingredient</label>
+    <input id="ingredient" name="ingredient" type="text" class="form-control"></p>
+    <p><button type="submit" class="btn btn-info">Search</button></p>
+  </form>
+  <br>
   <a href="/recipes"><img src='../img/manage.png' class="manage"></a>
   <a href="/categories"><img src='../img/view.png' class="view"></a>
+  <br>
+
+  <% if @recipes.any?() %>
+    <% @recipes.each do |recipe| %>
+    <div class="well">
+      <h4><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></a></h4>
+    </div>
+    <% end %>
+  <% end %>
+
 </div>

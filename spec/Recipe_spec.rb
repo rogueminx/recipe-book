@@ -10,8 +10,6 @@ describe(Recipe) do
     end
   end
 
-
-
   describe(".findingredient") do
     it("finds recipe ingredient") do
       test_recipe = Recipe.create({:recipe_name => "Taco", :ingredients => "Bean, cheese, tortilla", :instructions => "Roll that shit up", :rating => 3, :id => nil})

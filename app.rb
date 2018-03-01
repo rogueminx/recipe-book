@@ -9,6 +9,7 @@ require("pg")
 require("pry")
 
 get('/') do
+  @recipes = Recipe.sortrating
   erb:index
 end
 
@@ -22,11 +23,21 @@ get('/categories') do
   erb:categories
 end
 
+get('/rating') do
+  erb:rating
+end
+
+post('/search')do
+  @ingredient = params.fetch("ingredient")
+  @recipes = Recipe.findingredient(@ingredient)
+  erb:search
+end
+
 post('/recipes') do
   recipe_name = params.fetch("recipe_name")
   ingredients = params.fetch("ingredients")
   instructions = params.fetch("instructions")
-  recipe = Recipe.create({:recipe_name => recipe_name, :instructions => instructions, :ingredients => ingredients, :rating => nil, :id => nil})
+  recipe = Recipe.create({:recipe_name => recipe_name, :instructions => instructions, :ingredients => ingredients, :id => nil})
   @recipes = Recipe.all
   @categories = Category.all
   erb:recipes
@@ -68,8 +79,8 @@ post("/recipes/:id/category") do
 end
 
 patch("/recipes/:id/rating") do
-  recipe_id = params.fetch("id")
-  rating = params.fetch("rating")
+  recipe_id = params.fetch("id").to_i
+  rating = params.fetch("rating").to_i
   @recipe = Recipe.find(recipe_id)
   @recipe.update({:rating => rating})
   @assigned_category = @recipe.categories
