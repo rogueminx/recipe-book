@@ -1,27 +1,23 @@
+<a href='/' class="btn btn-info" id="back">back</a>
 <h1>Recipe Book</h1>
-<h3>Welcome to your recipe page.</h3>
+<h3>Welcome to your recipe page!</h3>
 <hr>
 <% if @recipes.any?() %>
   <h3>Here are all the recipes in your recipe book:</h3>
-  <table>
   <% @recipes.each do |recipe| %>
-    <tr>
-      <td><li><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></li></td>
-    </tr>
+    <h4><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></a></h4>
   <% end %>
-  </table>
 <% end %>
 <hr>
 <h3>Create a new recipe:</h3>
-<div class="row">
-  <div class="col-md-4">
+<div class="createrecipe">
     <form action="/recipes" method="post" class="form-container">
       <p><label for="recipe_name">Recipe Name</label>
       <input id="recipe_name" name="recipe_name" type="text" class="form-control"></p>
       <p><label for="ingredients">Ingredients:</label>
-      <input id="ingredients" name="ingredients" type="text" class="form-control"></p>
+      <textarea id="ingredients" name="ingredients" type="text" class="form-control"></textarea></p>
       <p><label for="instructions">Instructions:</label>
-      <input id="instructions" name="instructions" type="text" class="form-control"></p>
+      <textarea id="instructions" name="instructions" type="text" class="form-control"></textarea></p>
       <p><button type="submit" class="btn btn-info">Add Recipe</button></p>
     </form>
   </div>

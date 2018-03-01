@@ -1,3 +1,46 @@
 .remove_project_button {
   border: none;
 }
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  font-size: 90px;
+}
+h3, h4, h5, p, a {
+  text-align: center;
+}
+
+.manage {
+  margin-left: 70px;
+}
+.form-container {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.createrecipe {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-container {
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+.editname, .editingredients, .editinstructions {
+  display: none;
+}
+
+.btn.btn-danger {
+  float: right;
+  margin-top: 10px;
+
+}
+#back {
+  float: left;
+  margin-top: 10px;
+}

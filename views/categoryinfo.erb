@@ -1,5 +1,11 @@
+<a href='/categories' class="btn btn-info" id="back">back</a>
+<form action="/categories/<%= @category.id() %>" method="post" id="delete">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" class="btn btn-danger">Delete this Category</button>
+</form>
 <h1><%= @category.category_name %> category</h1>
 
+<hr>
 <% if @recipes.any?() %>
   <h3>Here are all the recipes in this category:</h3>
   <table>
@@ -10,8 +16,3 @@
   <% end %>
   </table>
 <% end %>
-<hr>
-<form action="/categories/<%= @category.id() %>" method="post">
-  <input name="_method" type="hidden" value="delete">
-  <button type="submit" class="btn btn-info">Delete this Category</button>
-</form>

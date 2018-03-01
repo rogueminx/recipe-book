@@ -1,6 +1,7 @@
 require("sinatra")
 require("sinatra/reloader")
-require("sinatra/activerecord")
+require "active_record"
+require "sinatra/activerecord"
 also_reload("lib/**/*.rb")
 require("./lib/category")
 require("./lib/recipe")

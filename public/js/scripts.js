@@ -1,0 +1,12 @@
+$(document).ready(function(event){
+  event.preventDefault;
+  $("#clickrecipe").click(function(){
+      $(".editname").toggle();
+  });
+  $("#clickingredients").click(function(){
+      $(".editingredients").toggle();
+  });
+  $("#clickinstructions").click(function(){
+      $(".editinstructions").toggle();
+  });
+});
