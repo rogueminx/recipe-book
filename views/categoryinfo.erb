@@ -5,7 +5,7 @@
   <table>
   <% @recipes.each do |recipe| %>
     <tr>
-      <td><li><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></li></td>
+      <td><a href="/recipes/<%= recipe.id()%>"><%= recipe.recipe_name %></li></td>
     </tr>
   <% end %>
   </table>

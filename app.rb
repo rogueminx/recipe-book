@@ -106,3 +106,11 @@ delete("/categories/:id") do
   @categories = Category.all
   erb:categories
 end
+
+delete("/categories/:id/recipe") do
+  # ADD CORRECT FUNCTIONALITY
+  # category = Category.find(params.fetch("id").to_i())
+  # category.delete()
+  # @categories = Category.all
+  # erb:categories
+end

@@ -34,12 +34,17 @@
   <table>
   <% @assigned_category.each do |category| %>
     <tr>
-      <td><li><a href="/category/<%= category.id()%>"><%= category.category_name %></li></td>
+      <td><h5><a href="/category/<%= category.id()%>"><%= category.category_name %></h5></td>
+      <td><form action="/categories/<%= category.id %>/recipe" method=post>
+            <input name="_method" type="hidden" value="delete">
+            <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
+            <button type="submit" class="remove_project_button">&#10005;</button>
+          </form></td>
     </tr>
   <% end %>
   </table>
 <% end %>
-<p>Assign this recipe to a category:</p>
+<h3>Assign this recipe to another category:</h3>
   <form action="/recipes/<%= @recipe.id %>/category" method="post">
     <p><select id="category_id" name="category_id">
       <% @categories.each do |category| %>
