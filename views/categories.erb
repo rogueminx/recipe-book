@@ -1,0 +1,19 @@
+<h1>Recipe Book</h1>
+<h3>Welcome to your recipe categories.</h3>
+
+<% if @categories.any?() %>
+  <h3>Here are all the categories in your recipe book:</h3>
+  <table>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><li><a href="/category/<%= category.id()%>"><%= category.category_name %></li></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<form action="/categories" method="post" class="form-container">
+  <p><label for="category_name">New Category</label>
+  <input id="category_name" name="category_name" type="text" class="form-control"></p>
+  <p><button type="submit" class="btn btn-info">Add Category</button></p>
+</form>
