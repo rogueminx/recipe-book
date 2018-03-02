@@ -1,3 +1,4 @@
+
 $(document).ready(function(event){
   event.preventDefault;
   $("#clickrecipe").click(function(){
@@ -8,5 +9,12 @@ $(document).ready(function(event){
   });
   $("#clickinstructions").click(function(){
       $(".editinstructions").toggle();
+  });
+  $("#rating").submit(function(event){
+    event.preventDefault()
+    var rating = $("#rating").val();
+    if (rating = 1) {
+      $("#deletealert").fadeIn();
+    };
   });
 });

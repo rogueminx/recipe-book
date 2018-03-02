@@ -12,6 +12,9 @@ h3, h4, h5, p, a, h2 {
   text-align: center;
 }
 
+.top {
+  font-family: 'Pacifico', cursive;
+}
 .manage {
   margin-left: 70px;
 }
@@ -48,4 +51,15 @@ h3, h4, h5, p, a, h2 {
 
 .deletecat {
   display: inline;
+}
+
+.well {
+  background-color: white;
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+}
+
+#deletealert {
+  display:none;
 }
